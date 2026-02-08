@@ -12,4 +12,4 @@ struct GeoResult: Codable, Identifiable, Hashable {
     let country: String?
     let admin1: String?
 }
-f
+
