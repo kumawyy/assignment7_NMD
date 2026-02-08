@@ -71,7 +71,7 @@ struct WeatherView: View {
         .task {
             await vm.fetch(city: city)
         }
-        .onChange(of: settings.useFahrenheit) { _ in
+        .onChange(of: settings.useFahrenheit) {
             Task { await vm.fetch(city: city) }
         }
     }
@@ -81,14 +81,11 @@ struct WeatherView: View {
     }
 
     private func formatDate(_ iso: String) -> String {
-        // Open-Meteo current.time часто вида: "2026-02-09T01:30"
         let isoFormatter = ISO8601DateFormatter()
         isoFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
 
-        // пробуем с миллисекундами
         var date = isoFormatter.date(from: iso)
 
-        // если без миллисекунд — fallback
         if date == nil {
             let f2 = ISO8601DateFormatter()
             f2.formatOptions = [.withInternetDateTime]
