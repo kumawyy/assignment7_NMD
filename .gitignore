@@ -1,0 +1,9 @@
+cat <<EOF > .gitignore
+.DS_Store
+build/
+DerivedData/
+*.xcuserstate
+*.xcuserdata/
+*.xccheckout
+*.xcscmblueprint
+EOF
